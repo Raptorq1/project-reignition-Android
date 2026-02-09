@@ -10,34 +10,54 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # --------------------------
+      # Checkout repo
+      # --------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java (required for Android)
+      # --------------------------
+      # Java (required for Android)
+      # --------------------------
+      - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
-      - name: Download Godot (from GitHub)
+      # --------------------------
+      # Download Godot from GitHub
+      # --------------------------
+      - name: Download Godot
         run: |
           wget -4 https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
           unzip Godot_v4.3-stable_linux.x86_64.zip
           chmod +x Godot_v4.3-stable_linux.x86_64
 
-      - name: Download Export Templates (from GitHub)
+      # --------------------------
+      # Download export templates
+      # --------------------------
+      - name: Download Export Templates
         run: |
           wget -4 https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           mkdir -p ~/.local/share/godot/export_templates/4.3.stable
-          unzip Godot_v4.3-stable_export_templates.tpz -d ~/.local/share/godot/export_templates/4.3.stable
+          unzip Godot_v4.3-stable_export_templates.tpz \
+            -d ~/.local/share/godot/export_templates/4.3.stable
 
-      - name: Export Android APK
+      # --------------------------
+      # Export Android APK
+      # --------------------------
+      - name: Export Android
         run: |
           mkdir -p build/android
           ./Godot_v4.3-stable_linux.x86_64 \
             --headless \
+            --path project \
             --export-release "Android" build/android/MyGame.apk
 
+      # --------------------------
+      # Upload APK
+      # --------------------------
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
