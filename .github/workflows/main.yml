@@ -21,15 +21,15 @@ jobs:
 
       - name: Download Godot (from GitHub)
         run: |
-          wget -4 https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
-          unzip Godot_v4.3-stable_linux.x86_64.zip
-          chmod +x Godot_v4.3-stable_linux.x86_64
+          wget -4 https://github.com/godotengine/godot/releases/download/4.6-stable/Godot_v4.6-stable_linux.x86_64.zip
+          unzip Godot_v4.6-stable_linux.x86_64.zip
+          chmod +x Godot_v4.6-stable_linux.x86_64
 
       - name: Download Export Templates (from GitHub)
         run: |
-          wget -4 https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
-          mkdir -p ~/.local/share/godot/export_templates/4.3.stable
-          unzip Godot_v4.3-stable_export_templates.tpz -d ~/.local/share/godot/export_templates/4.3.stable
+          wget -4 https://github.com/godotengine/godot/releases/download/4.6-stable/Godot_v4.6-stable_export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/4.6.stable
+          unzip Godot_v4.6-stable_export_templates.tpz -d ~/.local/share/godot/export_templates/4.6.stable
 
       - name: Export Android APK
         run: |
