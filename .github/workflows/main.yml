@@ -26,7 +26,7 @@ jobs:
           java-version: 17
 
       # --------------------------
-      # Download Godot from GitHub
+      # Download Godot (GitHub)
       # --------------------------
       - name: Download Godot
         run: |
@@ -52,7 +52,7 @@ jobs:
           mkdir -p build/android
           ./Godot_v4.3-stable_linux.x86_64 \
             --headless \
-            --path project \
+            --path Project \
             --export-release "Android" build/android/MyGame.apk
 
       # --------------------------
